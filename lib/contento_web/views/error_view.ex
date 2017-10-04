@@ -1,12 +1,23 @@
 defmodule ContentoWeb.ErrorView do
   use ContentoWeb, :view
 
-  def render("404.html", _assigns) do
-    "Page not found"
+  alias ContentoWeb.WebsiteView
+
+  def render("404.html", assigns) do
+    path = assigns[:conn].request_path
+
+    if String.contains?(path, "/c") do
+      render("not_found.html", %{})
+    else
+      theme_alias = assigns[:settings].theme.alias
+      template = theme_alias <> "/templates/not_found.html"
+
+      render(WebsiteView, template, %{})
+    end
   end
 
   def render("500.html", _assigns) do
-    "Internal server error"
+    render("internal_server_error.html", %{})
   end
 
   # In case no render clause matches or no

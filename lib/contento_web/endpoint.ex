@@ -3,6 +3,10 @@ defmodule ContentoWeb.Endpoint do
 
   socket "/socket", ContentoWeb.UserSocket
 
+  # Load settings into connection
+  # This is plugged here to be available when rendering ContentoWeb.ErrorView
+  plug ContentoWeb.Plug.Settings
+
   # Serves static files on "/"
   # Back-office assets are available on "/..."
   # Theme-specific assets are served on "/themes/[THEME_NAME]/..."
