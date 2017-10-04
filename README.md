@@ -43,7 +43,13 @@ $ cd ../ # leaving assets dir
 $ mix ecto.setup
 ```
 
-5. Run the server:
+5. Load themes into database (registers/updates themes found in `priv/themes`):
+
+```
+$ mix contento.load.themes
+```
+
+6. Run the server:
 
 ```
 $ mix phx.server
