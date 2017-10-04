@@ -27,6 +27,10 @@ config :contento, ContentoWeb.Plug.AuthRequired,
   module: Contento.Guardian,
   error_handler: ContentoWeb.SessionController
 
+config :contento, ContentoWeb.Plug.Website,
+  module: Contento.Guardian,
+  error_handler: ContentoWeb.SessionController
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"

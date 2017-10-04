@@ -19,7 +19,9 @@ defmodule ContentoWeb.Router do
   end
 
   pipeline :theme do
+    plug ContentoWeb.Plug.Website
     plug ContentoWeb.Plug.Theme
+    plug ContentoWeb.Plug.Maintenance
   end
 
   if Mix.env == :dev do
