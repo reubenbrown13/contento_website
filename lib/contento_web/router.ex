@@ -18,6 +18,10 @@ defmodule ContentoWeb.Router do
     plug :put_layout, {ContentoWeb.SessionView, "layout.html"}
   end
 
+  pipeline :theme do
+    plug ContentoWeb.Plug.Theme
+  end
+
   if Mix.env == :dev do
     scope "/debug" do
       forward "/sent_emails", Bamboo.EmailPreviewPlug
@@ -66,7 +70,7 @@ defmodule ContentoWeb.Router do
   end
 
   scope "/", ContentoWeb do
-    pipe_through [:browser]
+    pipe_through [:browser, :theme]
 
     # Index
     get "/", WebsiteController, :index
