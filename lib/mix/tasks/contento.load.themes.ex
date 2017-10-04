@@ -52,6 +52,10 @@ defmodule Mix.Tasks.Contento.Load.Themes do
   end
 
   def copy_theme_assets(theme_alias) do
-    Mix.Shell.cmd("cp -rf #{@base_path}/#{theme_alias}/assets priv/static/#{theme_alias}", fn(output) -> IO.write(output) end)
+    # Creates directory for themes assets if it doesn't exist
+    Mix.Shell.cmd("mkdir -p priv/static/themes", fn(output) -> IO.write(output) end)
+
+    # Copies theme assets to priv/static/themes/THEME_NAME
+    Mix.Shell.cmd("cp -rf #{@base_path}/#{theme_alias}/assets priv/static/themes/#{theme_alias}", fn(output) -> IO.write(output) end)
   end
 end

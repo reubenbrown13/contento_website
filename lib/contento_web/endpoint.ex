@@ -3,10 +3,12 @@ defmodule ContentoWeb.Endpoint do
 
   socket "/socket", ContentoWeb.UserSocket
 
-  # Serves Contento static files on "/c"
+  # Serves static files on "/"
+  # Back-office assets are available on "/..."
+  # Theme-specific assets are served on "/themes/[THEME_NAME]/..."
   plug Plug.Static,
-    at: "/c", from: :contento, gzip: false,
-    only: ~w(css fonts images js favicon.ico robots.txt)
+    at: "/", from: :contento, gzip: false,
+    only: ~w(css fonts js images favicon.ico robots.txt themes)
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.

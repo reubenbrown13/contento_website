@@ -8,7 +8,7 @@
     <title><%= page_title(@conn) %></title>
 
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    <link rel="stylesheet" href="<%= static_path(@conn, "/c/css/contento.css") %>">
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/contento.css") %>">
   </head>
   <body>
     <div class="wrapper">
@@ -78,6 +78,6 @@
       </div>
     </div>
 
-    <script src="<%= static_path(@conn, "/c/js/contento.js") %>"></script>
+    <script src="<%= static_path(@conn, "/js/contento.js") %>"></script>
   </body>
 </html>

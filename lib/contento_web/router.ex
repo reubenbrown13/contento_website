@@ -15,10 +15,6 @@ defmodule ContentoWeb.Router do
     plug :put_layout, {ContentoWeb.LayoutView, "contento.html"}
   end
 
-  pipeline :theme do
-    plug ContentoWeb.Plug.ThemeAssets
-  end
-
   pipeline :session do
     plug :put_layout, {ContentoWeb.SessionView, "layout.html"}
   end
@@ -71,16 +67,12 @@ defmodule ContentoWeb.Router do
   end
 
   scope "/", ContentoWeb do
-    pipe_through [:browser, :theme]
+    pipe_through [:browser]
 
     # Index
     get "/", WebsiteController, :index
 
     # Page or Post
     get "/:slug", WebsiteController, :page_or_post
-
-    # FIXME: this should be handled correctly and is currently
-    # a quick and nasty workaround.
-    get "/*a", WebsiteController, :page_or_post
   end
 end
