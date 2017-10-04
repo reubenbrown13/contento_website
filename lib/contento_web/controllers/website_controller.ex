@@ -3,6 +3,8 @@ defmodule ContentoWeb.WebsiteController do
 
   alias Contento.Content
 
+  action_fallback ContentoWeb.FallbackController
+
   def index(conn, _params) do
     posts = Content.list_posts(published: true)
     render(conn, template(conn, "index.html"), posts: posts)
@@ -15,7 +17,7 @@ defmodule ContentoWeb.WebsiteController do
       post = Content.get_post(slug: slug) ->
         render(conn, template(conn, "post.html"), post: post)
       true ->
-        render(conn, template(conn, "not_found.html"))
+        {:error, :website_not_found}
     end
   end
 
