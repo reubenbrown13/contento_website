@@ -31,6 +31,7 @@
 - [ ] Archives (allow a visitor to browse a chronologically organized posts list)
   - [ ] Simplo Theme: Archives page
 - [ ] Search (allow a visitor to search for posts, pages and authors)
+- [ ] RSS Feed
 
 ### 0.0.3
 
@@ -38,6 +39,7 @@
 
 ### Future
 
+- [ ] SEO Tools
 - [ ] Comments (service or self-hosted)
 - [ ] Media management (upload and manage media files)
   - Decide whether to use a service like AWS S3 (preferable, but may be a constraint to some users) to store files or use local storage.
