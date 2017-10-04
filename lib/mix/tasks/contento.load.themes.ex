@@ -21,9 +21,11 @@ defmodule Mix.Tasks.Contento.Load.Themes do
     |> Enum.each(fn theme_config ->
       if theme = Themes.get_theme(alias: theme_config["alias"]) do
         Logger.info("Updating \"#{theme.alias}\" theme if necessary...")
+        copy_theme_assets(theme.alias)
         Themes.update_theme(theme, theme_config)
       else
         Logger.info("Creating \"#{theme_config["alias"]}\" theme...")
+        copy_theme_assets(theme_config["alias"])
         Themes.create_theme(theme_config)
       end
     end)
@@ -47,5 +49,9 @@ defmodule Mix.Tasks.Contento.Load.Themes do
     path
     |> String.replace(@base_path <> "/", "")
     |> String.replace("/" <> @config_filename, "")
+  end
+
+  def copy_theme_assets(theme_alias) do
+    Mix.Shell.cmd("cp -rf #{@base_path}/#{theme_alias}/assets priv/static/#{theme_alias}", fn(output) -> IO.write(output) end)
   end
 end

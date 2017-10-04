@@ -12,5 +12,5 @@ defmodule ContentoWeb.Plug.ThemeAssets do
   end
 
   defp assets_path(conn),
-    do: Path.join(["priv/themes", conn.assigns[:settings].theme.alias, "assets"])
+    do: Path.join(["priv/static", conn.assigns[:settings].theme.alias])
 end
