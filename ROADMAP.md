@@ -24,6 +24,7 @@
   - [x] Allow multiple themes
   - [ ] Manage themes in back-office
 - [ ] Install feature (initial setup)
+- [x] Update feature (update's contento)
 - [ ] Docker for production (should compile assets and source and run the server).
 
 ### 0.0.2
