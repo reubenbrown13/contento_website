@@ -7,6 +7,12 @@ defmodule Mix.Tasks.Contento.Install do
   alias Contento.Accounts
   alias Contento.Themes
 
+  @default_settings %{
+    "website_title" => "An Awesome Website",
+    "website_description" => "Random Opinions and Ideas",
+    "theme_id" => 1
+  }
+
   @default_user %{
     "name" => "Default User",
     "handle" => "contento",
@@ -38,10 +44,14 @@ defmodule Mix.Tasks.Contento.Install do
       raise_no_themes()
     end
 
-    settings = Map.new()
-    |> prompt(:website_title, "An Awesome Website")
-    |> prompt(:website_description, "Random Ideas")
-    |> prompt_theme(:theme_id, themes)
+    settings = if "--defaults" in args do
+      @default_settings
+    else
+      Map.new()
+      |> prompt(:website_title, @default_settings["website_title"])
+      |> prompt(:website_description, @default_settings["website_description"])
+      |> prompt_theme(:theme_id, themes)
+    end
 
     Mix.Shell.IO.info("Creating settings and default user...")
 
@@ -163,7 +173,7 @@ defmodule Mix.Tasks.Contento.Install do
 
       mix contento.install --force
 
-    Note that this will delete all previous entries in database.
+    Note that this will entirely delete your current database.
     """
   end
 end
