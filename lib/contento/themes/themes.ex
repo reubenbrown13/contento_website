@@ -13,6 +13,9 @@ defmodule Contento.Themes do
   def get_theme(id) when is_binary(id), do: get_theme(id: id)
   def get_theme(conds) when is_list(conds), do: Repo.get_by(Theme, conds)
 
+  def list_themes() do
+    Repo.all(Theme, order_by: [desc: :inserted_at])
+  end
   def list_themes(pagination_params, conds \\ []) do
     Theme
     |> where(^conds)
