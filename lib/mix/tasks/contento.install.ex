@@ -58,6 +58,9 @@ defmodule Mix.Tasks.Contento.Install do
     with {:ok, _settings} <- Settings.create_settings(settings),
          {:ok, _user} <- Accounts.create_user(@default_user) do
 
+      Mix.Shell.IO.info("Building assets...")
+      Mix.Task.run("contento.build.assets")
+
       Mix.Shell.IO.info """
       Done, Contento is ready to run!
 
