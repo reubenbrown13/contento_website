@@ -48,20 +48,4 @@ config :logger, :console, format: "[$level] $message\n"
 # in production as building large stacktraces may be expensive.
 config :phoenix, :stacktrace_depth, 20
 
-# Configure your database
-config :contento, Contento.Repo,
-  adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
-  database: "contento_dev",
-  hostname: "localhost",
-  pool_size: 10
-
-# Configure Guardian
-config :contento, Contento.Guardian,
-  issuer: "contento_dev",
-  secret_key: "VelEMyBPyRhoU7M3eIrVmFlZtxVhYAHLICpfFjleEgXyRfgQBbHsznJpFLRve0lk"
-
-# Configure Bamboo
-config :contento, Contento.Mailer,
-  adapter: Bamboo.LocalAdapter
+import_config "dev.secret.exs"
