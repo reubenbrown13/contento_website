@@ -29,38 +29,24 @@ $ cd ./contento/
 $ mix deps.get
 ```
 
-3. Install assets dependencies:
+3. Setup Contento:
 
 ```
-$ cd ./assets/
-$ yarn install
+$ mix contento.install --force --defaults
 ```
 
-4. Create database and run migrations:
-
-```
-$ cd ../ # leaving assets dir
-$ mix ecto.setup
-```
-
-5. Load themes into database (registers/updates themes found in `priv/themes`):
-
-```
-$ mix contento.load.themes
-```
-
-6. Run the server:
+6. Run Contento:
 
 ```
 $ mix phx.server
 ```
 
-After that you can access the website in `http://localhost:4000` and login to admin in `http://localhost:4000/login`.
+After that you can access the website in `http://localhost:4000` and login to the back-office in `http://localhost:4000/login`.
 
 Default credentials are:
 
-- Email: **su@example.org**
-- Password: **12345678**
+- Email: **contento@example.org**
+- Password: **contento**
 
 **NOTE:** Check [ROADMAP.md](https://github.com/contentocms/contento/blob/master/ROADMAP.md) for current features and what's expected to come next.
 
