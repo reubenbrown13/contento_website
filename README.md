@@ -29,13 +29,19 @@ $ cd ./contento/
 $ mix deps.get
 ```
 
-3. Setup Contento:
+3. Generate configuration file:
+
+```
+$ mix contento.gen.config
+```
+
+4. Setup Contento:
 
 ```
 $ mix contento.install --force --defaults
 ```
 
-6. Run Contento:
+5. Run Contento:
 
 ```
 $ mix phx.server
