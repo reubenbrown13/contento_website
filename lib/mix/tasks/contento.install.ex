@@ -32,8 +32,8 @@ defmodule Mix.Tasks.Contento.Install do
     end
 
     # Create database and run migrations
-    Mix.Task.run("ecto.create")
-    Mix.Task.run("ecto.migrate")
+    Mix.shell.cmd("mix ecto.create")
+    Mix.shell.cmd("mix ecto.migrate")
 
     # Load themes
     Mix.Task.run("contento.load.themes")
