@@ -1,7 +1,9 @@
-defmodule Mix.Tasks.Contento.Install do
+defmodule Mix.Tasks.Contento.Setup do
   use Mix.Task
 
   import Mix.Ecto
+
+  require Logger
 
   alias Contento.Settings
   alias Contento.Accounts
@@ -21,22 +23,22 @@ defmodule Mix.Tasks.Contento.Install do
   }
 
   def run(args) do
-    welcome_message()
+    # welcome_message()
 
-    if installed?() do
-      if "--force" in args do
-        Mix.Task.run("ecto.drop")
-      else
-        raise_already_installed()
-      end
-    end
+    # if installed?() do
+    #   if "--force" in args do
+    #     Mix.Task.run("ecto.drop")
+    #   else
+    #     raise_already_installed()
+    #   end
+    # end
 
     # Create database and run migrations
-    Mix.shell.cmd("mix ecto.create")
-    Mix.shell.cmd("mix ecto.migrate")
-
-    # Load themes
-    Mix.Task.run("contento.load.themes")
+    # Mix.shell.cmd("mix ecto.create")
+    # Mix.shell.cmd("mix ecto.migrate")
+    #
+    # # Load themes
+    # Mix.Task.run("contento.load.themes")
 
     themes = Themes.list_themes()
 
@@ -53,15 +55,12 @@ defmodule Mix.Tasks.Contento.Install do
       |> prompt_theme(:theme_id, themes)
     end
 
-    Mix.Shell.IO.info("Creating settings and default user...")
+    Logger.info "Creating settings and default user..."
 
     with {:ok, _settings} <- Settings.create_settings(settings),
          {:ok, _user} <- Accounts.create_user(@default_user) do
 
-      Mix.Shell.IO.info("Building assets...")
-      Mix.Task.run("contento.build.assets")
-
-      Mix.Shell.IO.info """
+      Logger.info """
       Done, Contento is ready to run!
 
       You may now run Contento with:
