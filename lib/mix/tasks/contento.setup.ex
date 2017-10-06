@@ -40,6 +40,8 @@ defmodule Mix.Tasks.Contento.Setup do
     # # Load themes
     # Mix.Task.run("contento.load.themes")
 
+    ensure_started(Contento.Repo, [])
+
     themes = Themes.list_themes()
 
     if length(themes) == 0 do
