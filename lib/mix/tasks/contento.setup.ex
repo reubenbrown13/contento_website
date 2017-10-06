@@ -40,7 +40,7 @@ defmodule Mix.Tasks.Contento.Setup do
     # # Load themes
     # Mix.Task.run("contento.load.themes")
 
-    ensure_started(Contento.Repo, [])
+    {:ok, pid, _} = ensure_started(Contento.Repo, [])
 
     themes = Themes.list_themes()
 
@@ -61,6 +61,12 @@ defmodule Mix.Tasks.Contento.Setup do
 
     with {:ok, _settings} <- Settings.create_settings(settings),
          {:ok, _user} <- Accounts.create_user(@default_user) do
+
+      Contento.Repo.stop(pid)
+
+      if "--seed" in args do
+        Mix.Task.run("run", ["priv/repo/seeds.exs"])
+      end
 
       Logger.info """
       Done, Contento is ready to run!
