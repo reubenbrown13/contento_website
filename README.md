@@ -26,7 +26,7 @@ $ mix archive.install https://github.com/contentocms/contento_new/raw/master/rel
 $ mix contento.new [directory]
 ```
 
-This command will do a few things for you, including: cloning this repo to given directory, fetch and install dependencies, compile back-office assets, generate configuration files with defaults, create database and run migrations, install default theme Simplo and setup Contento with defaults.
+This command will do a few things for you, including: cloning this repo to given directory, fetch and install dependencies, compile back-office assets, generate configuration files with defaults, create database and run migrations, install default theme [Simplo](https://github.com/contentocms/simplo) and setup Contento with defaults.
 
 3. Your website is ready! Now you can access your website on `http://localhost:4000` or `http://localhost:4000/login` to access back-office.
 
