@@ -13,16 +13,30 @@ defmodule Mix.Tasks.Contento.Install.Theme do
   def run(args) do
     ensure_started(Contento.Repo, [])
 
-    repo = Enum.at(args, 0)
+    repo_or_dir = Enum.at(args, 0)
 
-    with {:ok, _} <- clone_theme(repo),
-         {:ok, config} <- theme_config(repo),
-         :ok <- copy_assets(repo),
+    if "--local" in args do
+      {:ok, _} = copy_theme(repo_or_dir)
+    else
+      {:ok, _} = clone_theme(repo_or_dir)
+    end
+
+    with {:ok, config} <- theme_config(repo_or_dir),
+         :ok <- copy_assets(repo_or_dir),
          {:ok, theme} <- Themes.create_theme(config) do
       Logger.info("Theme #{theme.name} installed successfully!")
     else
       err -> Mix.raise("#{inspect err}")
     end
+  end
+
+  defp copy_theme(dir) do
+    dest = Path.join(@base_path, theme_alias(dir))
+
+    Task.async(fn ->
+      cmd("cp", ["-rf", dir, dest])
+    end)
+    |> Task.await()
   end
 
   defp clone_theme(repo) do
