@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Contento - Internal Server Error</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href="/css/contento.css">
+  </head>
+  <body>
+    <div class="container text-light">
+      <h1 class="display-4">
+        <div><%= gettext("500. Internal Server Error") %>!</div>
+      </h1>
+      <p class="lead">
+        <%= gettext("Sorry, something wrong has happened... Please try refreshing this page or wait a few minutes before trying again.") %>
+      </p>
+      <p>
+        <%= gettext("If the error persists, please create a new issue in ") %> <a href="https://github.com/contentocms/contento/issues" class="text-light"><%= gettext("Contento's Issue Tracker") %></a>.
+      </p>
+    </div>
+  </body>
+</html>
