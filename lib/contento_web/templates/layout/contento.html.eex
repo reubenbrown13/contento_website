@@ -13,8 +13,8 @@
   <body>
     <div class="wrapper">
       <div class="sidebar">
-        <a href="<%= admin_dashboard_path(@conn, :index) %>" class="brand">
-          <span class="fa fa-circle-o-notch"></span> Contento
+        <a href="<%= admin_dashboard_path(@conn, :index) %>" class="brand text-center">
+          <img src="<%= static_path(@conn, "/images/logo.png") %>" height="48" alt="Contento's Logo" />
         </a>
         <div class="user">
           <div class="username">
