@@ -8,48 +8,29 @@
 
 This project is currently a WIP and documentation, guides and more info is on it's way, stay tuned by staring this repo!
 
-Many things may change before a stable version comes out, if you have any idea/suggestion/contribution, feel free to do it!
+Many things may change before a stable version comes out, if you have any idea/suggestion/contribution, feel free to do go ahead!
 
-Find me (soon *us* I hope!) in #contento channel on [Elixir Slack](https://elixir-slackin.herokuapp.com/).
+If you would like to join discussion about this project, join `#contento` channel on [Elixir Slack](https://elixir-slackin.herokuapp.com/).
 
 ## Getting Started
 
-*This info will be updated soon!*
-
-1. Clone this repo wherever you'd like:
+1. Install the Contento archive, if you haven't already done so:
 
 ```
-$ git clone https://github.com/contentocms/contento.git
+$ mix archive.install https://github.com/contentocms/contento_new/raw/master/releases/contento.new.ez
 ```
 
-2. Install dependencies:
+2. Create your new website with:
 
 ```
-$ cd ./contento/
-$ mix deps.get
+$ mix contento.new [directory]
 ```
 
-3. Generate configuration file:
+This command will do a few things for you, including: cloning this repo to given directory, fetch and install dependencies, compile back-office assets, generate configuration files with defaults, create database and run migrations, install default theme Simplo and setup Contento with defaults.
 
-```
-$ mix contento.gen.config
-```
+3. Your website is ready! Now you can access your website on `http://localhost:4000` or `http://localhost:4000/login` to access back-office.
 
-4. Setup Contento:
-
-```
-$ mix contento.install --force --defaults
-```
-
-5. Run Contento:
-
-```
-$ mix phx.server
-```
-
-After that you can access the website in `http://localhost:4000` and login to the back-office in `http://localhost:4000/login`.
-
-Default credentials are:
+Default user credentials are:
 
 - Email: **contento@example.org**
 - Password: **contento**
