@@ -1,3 +1,3 @@
-# Simplo Theme
+# Contento Theme
 
-> The Contento base theme.
+> Theme for the Contento website.
