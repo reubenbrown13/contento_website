@@ -1,3 +1,6 @@
+** code is hosted on [gitlab](https://gitlab.com/reubenbrown13/contento_website) now **
+
+
 # Contento
 
 > An open source CMS built with the power of Elixir, Phoenix and Postgresql.
